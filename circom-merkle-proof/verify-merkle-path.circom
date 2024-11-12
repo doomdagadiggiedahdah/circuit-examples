@@ -48,4 +48,4 @@ template VerifyMerklePath(levels) {
     root === computedPath[levels - 1];
 }
 
-component main = VerifyMerklePath(32);
+component main = VerifyMerklePath(4);

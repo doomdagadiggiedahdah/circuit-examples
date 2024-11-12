@@ -8,8 +8,10 @@ circom $MY_CIRCUIT.circom --r1cs --wasm --sym -o target/
 
 cd target/${MY_CIRCUIT}_js
 if [[ ! -f input.json ]] ; then 
-    echo -e "{\n // Put your witness input here\n}" > input.json
-    vi input.json
+    echo '{"leaf":"1","pathElements":["2","3","4","5"],"pathIndices":["0","1","0","1"],"root":"13094141708227878581713955617230251377955166804931824481860812195742610550279"}' > input.json
+
+
+    #echo -e '{ "a": ["2", "3"], "b": ["4", "5"], "expect": "23" }' > input.json
 fi
 # example witness for Multiplier2:
 # {
