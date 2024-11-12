@@ -1,7 +1,25 @@
+# install
+- https://noir-lang.org/docs/getting_started/quick_start/
+- these notes are from v0.36.0; og notes were fairly different, so if these are too check versioning.
+- also needed to run `sudo apt-get install libc++-dev libc++abi-dev` to get `bb` to work
+- and adding the folder to my PATH `set -x PATH $PATH $HOME/.bb; source ~/.config/fish/config.fish`
+
 # Noir
 Build: `nargo check`
-Prove: set up inputs in `Prover.toml` and run `nargo prove p -v`. `nargo prove --show-output p` to show println logs.
-Verify: `nargo verify p`
+Prove: set up inputs in `Prover.toml` and run `nargo execute`. (quick start uses bb proving backend)`` to show println logs.
+- sample: 
+```Prover.toml
+expect = "11"
+x = ["1", "2"]
+y = ["3", "4"]
+```
+...then run `bb prove -b target/nargo_dot_product.json -w target/nargo_dot_product.gz -o target/proof`
+      
+Verify: 
+```
+bb write_vk -b ./target/nargo_dot_product.json -o target/vk
+bb verify -k target/vk -p target/proof
+```
 
 ## Notes on Noir
 Main wows:

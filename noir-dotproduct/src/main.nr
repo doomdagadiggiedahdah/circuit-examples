@@ -7,7 +7,7 @@ fn main(x : [Field; 2], y : pub [Field; 2], expect: Field) {
     println(y);
     println("computed dotproduct: ");
     println(out);
-    constrain out == expect;
+    assert( out == expect);
 }
 
 fn dotproduct(x : [Field; 2], y : [Field; 2]) -> Field {
@@ -21,5 +21,5 @@ fn dotproduct(x : [Field; 2], y : [Field; 2]) -> Field {
 // testing in nargo
 #[test]
 fn test_main() {
-    constrain dotproduct([1,2],[3,4]) == 11;
+    assert (dotproduct([1,2],[3,4]) == 11);
 }
